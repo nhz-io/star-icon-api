@@ -52,6 +52,7 @@
     "esdoc-es7-plugin": "0.0.3",
     "hapi": "^13.2.1",
     "mocktail": "^0.3.8",
+    "sinon": "^1.17.3",
     "xo": "^0.12.1"
   },
   "dependencies": {
