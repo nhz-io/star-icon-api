@@ -1,5 +1,4 @@
 #!/bin/bash
-if [ $(git rev-parse --abbrev-ref HEAD) != "master" ]; then exit 0; fi
 
 set -e
 rm -rf doc || exit 0
