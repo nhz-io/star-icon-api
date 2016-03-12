@@ -149,6 +149,26 @@ const parsers = {
 		}
 		return {zoom: value.toString()}
 	},
+
+	width(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(', ')
+		}
+		return {width: value.toString()}
+	},
+
+	height(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(', ')
+		}
+		return {height: value.toString()}
+	},
 }
 
 const attributes = Object.keys(parsers)
