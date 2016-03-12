@@ -18,7 +18,7 @@
     "babel": "./node_modules/babel-cli/bin/babel.js",
     "esdoc": "./node_modules/esdoc/out/src/ESDocCLI.js",
     "clean": "npm run rimraf -- dist",
-    "build": "npm run babel -- src -d dist",
+    "build": "npm run babel -- --no-babelrc --presets es2015,stage-0 src -d dist",
     "doc": "npm run esdoc -- -c .esdoc",
     "dist": "npm run test && npm run clean && npm run build && npm run doc",
     "start": "ava --watch",
@@ -81,14 +81,9 @@
       "test/*.js",
       "!test/mocks/*..js"
     ],
-    "babel": {
-      "presets": [
-        "es2015",
-        "stage-0"
-      ],
-      "plugins": [
-        "mocktail"
-      ]
-    }
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   }
 }
