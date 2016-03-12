@@ -1,3 +1,3 @@
-import sinon from 'sinon'
+// import sinon from 'sinon'
 import './setup-unit-tests'
-import {inject} from 'mocktail'
+// import {inject} from 'mocktail'

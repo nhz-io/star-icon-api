@@ -1,12 +1,12 @@
 import parseOpts from './parseOpts'
+import createSvg from './createSvg'
 
-/** @typedef {Object} HapiRouteConfig */
+/** @external {HapiRouteConfig} http://hapijs.com/api#route-options */
 
 /**
 	* @typedef {Object} StarApiConfig
 	* @property {String} ?method
 	* @property {String} ?path - base endpoint
-	* @property {Boolean} ?redis - redis client
 	*/
 
 /**
@@ -15,8 +15,13 @@ import parseOpts from './parseOpts'
 	* @return {HapiRouteConfig}
 	*/
 export function createRouteConfig(config = {}) {
-	const {method = 'GET', path = '/star', redis} = config
-	return {}
+	const {method = 'GET', path = '/star'} = config
+	return {
+		method, path, handler: (request, reply) => {
+			const svg = createSvg(parseOpts(request))
+			reply(svg)
+		},
+	}
 }
 
 export default createRouteConfig

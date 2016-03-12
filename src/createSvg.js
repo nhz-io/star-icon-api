@@ -1,4 +1,4 @@
-import {render, paths, normalize} from 'star-icon-tag'
+import {render, paths} from 'star-icon-tag'
 import dom from './microdom'
 
 const header = `<?xml version="1.0" standalone="no"?>
@@ -17,7 +17,7 @@ export function createSvg(opts = {}) {
 	svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
 	svg.setAttribute('version', '1.1')
 	svg.setAttribute('baseProfile', 'full')
-	if(opts.width && opts.height) {
+	if (opts.width && opts.height) {
 		svg.setAttribute('width', opts.width)
 		svg.setAttribute('height', opts.height)
 	}
