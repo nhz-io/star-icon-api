@@ -5,7 +5,6 @@ env:
   global:
   - GH_REF: github.com/nhz-io/star-icon-hapi
   - secure: RHoPXGK4P5JDeM+9W+tQ4drto+0Ov9zCg74t4PwuSkcJmw4uy/MG6kuRYdfN939o7b/bXIW6y1I8UGOfmP31wjeyWrv5yf+iOW4DPag6+MMPx1H3oyqNglLvrguev938u37Nn5GDoL8ajfgGVSVZ7u7uSo56VF09XmyXwizoKirVtXN3LiuwEQmr9Ek/ThqSSGp7z3aO5we9aJ4v+dNLhzo3uaOjlkdVSysi5cob6kYO7Pu2Zroi9DJRhcuVrwqQvpX5rvgZloQEVP4pvLwDLgI9uk1gnAzQiFUZwRG/dKctosrZMaqxuA5jhOAJ5ze4lmswjFk+imPkCwVg0PHFUNz81ZEvMWFPcjyoFOGH+aGm8gIVADa++/MybT/2SmL7PoSO8aRBEa2AEeLDMvOuWriX3ZBAFvOGwutcQrS2yrYU7FRS2Cb+VbB+dkSlwRPFIeolrbqpRuO+KxzCfXlSQXCfLJX+nTuS5doBY4tvMC/5sKT3LhH/QetUlWPAHrx4oCcgBE8lEv/zXOgwsYn4KyTclyM03Pmv4m4bd179ki37yJ1fFcqGl7LbCl8HhY9MSWktQl2CeFXZX3PqQorRmK1+oTKW9e538/HJ2zgYRToxamYPGHandmgHp4YSO2NtGhXFwVGaHRDOfVzPtYS6tFgpvvKng9llYcAJIxeDCik=
-script: npm run-script travis
 deploy:
   provider: npm
   email: dev@nhz.io
