@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- '4.2'
+env:
+  global:
+  - GH_REF: github.com/nhz-io/star-icon-hapi
+  - secure: RHoPXGK4P5JDeM+9W+tQ4drto+0Ov9zCg74t4PwuSkcJmw4uy/MG6kuRYdfN939o7b/bXIW6y1I8UGOfmP31wjeyWrv5yf+iOW4DPag6+MMPx1H3oyqNglLvrguev938u37Nn5GDoL8ajfgGVSVZ7u7uSo56VF09XmyXwizoKirVtXN3LiuwEQmr9Ek/ThqSSGp7z3aO5we9aJ4v+dNLhzo3uaOjlkdVSysi5cob6kYO7Pu2Zroi9DJRhcuVrwqQvpX5rvgZloQEVP4pvLwDLgI9uk1gnAzQiFUZwRG/dKctosrZMaqxuA5jhOAJ5ze4lmswjFk+imPkCwVg0PHFUNz81ZEvMWFPcjyoFOGH+aGm8gIVADa++/MybT/2SmL7PoSO8aRBEa2AEeLDMvOuWriX3ZBAFvOGwutcQrS2yrYU7FRS2Cb+VbB+dkSlwRPFIeolrbqpRuO+KxzCfXlSQXCfLJX+nTuS5doBY4tvMC/5sKT3LhH/QetUlWPAHrx4oCcgBE8lEv/zXOgwsYn4KyTclyM03Pmv4m4bd179ki37yJ1fFcqGl7LbCl8HhY9MSWktQl2CeFXZX3PqQorRmK1+oTKW9e538/HJ2zgYRToxamYPGHandmgHp4YSO2NtGhXFwVGaHRDOfVzPtYS6tFgpvvKng9llYcAJIxeDCik=
+script: npm run-script travis
+deploy:
+  provider: npm
+  email: dev@nhz.io
+  api_key:
+    secure: JbT4Vzx53uzY9xet0HfO95ERohg8G7Sx3JdgZeIVVPyfs7t/aKh+BSCe6sIos8fXLW0pea8U/ddC2DxMBI59zOgdKdR0O0CwmFVlp/UDl8vaklH5bBfj4N/VMR9Yz9V+J0BGVa78y9Rgx+elS4JGddSQQDFGv2TROvEPB+FKA64tFSKKs8rvsvAYsURVgy82ak6jOv8abao1qz4xZ9mm4XWfcyGujWCz1SBJIXpiDLEQJjNblw7lbTy6MIjx0ft7szmlvmBs5F8tLLerjSedOJWnIcAJbIzHrHIfie8Gmf7IvuvNShhVI4dtFSkUDBLOAPZCzpK6jw+SVKkrBuTtEV73cV3DPbuody/aPHvqilwh0TAS3cYCiin+SCg2VTS80yzlID9qoVWRBuIGte8jdBWsWGnZs6rn7Ri/U+ETe6AOCRjl96UZ7IYHHycyGKrot8kIZm8qAHlH2/EL9XDqPsLM6aufeEWH2zB4IIa3/ALRakefu3AsCaZvGPrQJNRtnSWClYeMJKV9pMKtv4umyHZ7RgwxaPeWlS9qnlR3qBkur+tTLCRC72/voa9VrzsR5aCfBRCTyjWX1G3SkEV/J2qJTHUk6ydiqOl9VhjJAUQhtO1llTwEv1CUce63idMuSDDR7emwjSBfO2lNo/6bieKBXLRyz3uIalO24MFwAsg=
+  on:
+    tags: true
+    repo: nhz-io/star-icon-hapi
+    branch: master
+after_deploy:
+- bash ./gh-pages.sh

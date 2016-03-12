@@ -1,0 +1,93 @@
+{
+  "name": "star-icon-hapi",
+  "version": "0.0.0",
+  "description": "star-icon svg as a service (hapi)",
+  "license": "MIT",
+  "repository": "nhz-io/star-icon-hapi",
+  "author": {
+    "name": "Ishi Ruy",
+    "email": "dev@nhz.io",
+    "url": "star.nhz.io"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "test": "xo && ava",
+    "rimraf": "./node_modules/rimraf/bin.js",
+    "babel": "./node_modules/babel-cli/bin/babel.js",
+    "esdoc": "./node_modules/esdoc/out/src/ESDocCLI.js",
+    "clean": "npm run rimraf -- dist",
+    "build": "npm run babel -- src -d dist",
+    "doc": "npm run esdoc -- -c .esdoc",
+    "dist": "npm run test && npm run clean && npm run build && npm run doc",
+    "start": "ava --watch",
+    "prepublish": "npm run dist"
+  },
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/index.js",
+  "keywords": [
+    "nhz.io",
+    "riot",
+    "star",
+    "stars",
+    "svg",
+    "icon",
+    "star-icon",
+    "api",
+    "hapi",
+    "service",
+    "hapi-route",
+    "star-icon-api",
+    "star-icon-tag"
+  ],
+  "devDependencies": {
+    "ava": "^0.12.0",
+    "babel-cli": "^6.6.5",
+    "babel-plugin-mocktail": "^0.1.16",
+    "babel-register": "^6.7.2",
+    "esdoc": "^0.4.6",
+    "esdoc-es7-plugin": "0.0.3",
+    "hapi": "^13.2.1",
+    "mocktail": "^0.3.8",
+    "xo": "^0.12.1"
+  },
+  "dependencies": {
+    "riot": "^2.3.17",
+    "star-icon-tag": "*"
+  },
+  "xo": {
+    "esnext": true,
+    "ignores": [
+      "dist/**",
+      "doc/**"
+    ],
+    "rules": {
+      "semi": [
+        1,
+        "never"
+      ],
+      "comma-dangle": [
+        1,
+        "always-multiline"
+      ]
+    }
+  },
+  "ava": {
+    "files": [
+      "test/*.js",
+      "!test/mocks/*..js"
+    ],
+    "babel": {
+      "presets": [
+        "es2015",
+        "stage-0"
+      ],
+      "plugins": [
+        "mocktail"
+      ]
+    }
+  }
+}

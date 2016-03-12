@@ -1,0 +1,17 @@
+node_modules
+examples
+assets
+doc
+src
+test
+.git
+.babelrc
+.editorconfig
+.gitattributes
+.gitignore
+.npmignore
+.travis.yml
+.esdoc
+npm-shrinkwrap.json
+*.log
+gh-pages.sh
