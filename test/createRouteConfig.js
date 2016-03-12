@@ -1,4 +1,5 @@
 import test from 'ava'
+import sinon from 'sinon'
 import './helpers/setup-unit-tests'
 import {createSvg, parseOpts} from './helpers/createRouteConfig'
 import createRouteConfig from '../src/createRouteConfig'
@@ -23,15 +24,24 @@ test('uses provided method', t => {
 })
 
 test('handler calls parseOpts', t => {
+	const type = sinon.spy()
 	parseOpts.reset()
 	const config = createRouteConfig()
-	config.handler(null, () => {})
+	config.handler(null, () => ({type}))
 	t.true(parseOpts.calledOnce)
 })
 
 test('handler calls createSvg', t => {
+	const type = sinon.spy()
 	createSvg.reset()
 	const config = createRouteConfig()
-	config.handler(null, () => {})
+	config.handler(null, () => ({type}))
 	t.true(createSvg.calledOnce)
+})
+
+test('handler sets svg mime type', t => {
+	const type = sinon.spy()
+	const config = createRouteConfig()
+	config.handler(null, () => ({type}))
+	t.true(type.calledWith('image/svg+xml'))
 })
