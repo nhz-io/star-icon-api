@@ -1,5 +1,4 @@
 import test from 'ava'
-import './helpers/parseOpts'
 import parseOpts from '../src/parseOpts'
 
 /** @test {src/parseOpts.js~parseOpts} */
