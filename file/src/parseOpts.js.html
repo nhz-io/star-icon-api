@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/parseOpts.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/nhz-io/star-icon-hapi" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createRouteConfig">createRouteConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSvg">createSvg</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseOpts">parseOpts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-microdom">microdom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StarApiConfig">StarApiConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StarIconOpts">StarIconOpts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://hapijs.com/api#route-options">HapiRouteConfig</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/parseOpts.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+	* @typedef {Object} StarIconOpts
+	* @property {String} layers
+	* @property {String} arms
+	* @property {String} fill
+	* @property {String} ratio
+	* @property {String} rotation
+	* @property {string} zoom
+	*/
+
+/**
+	* @desc check if passed value (array of values) is an integer
+	* @param {Number|String|Array} value
+	* @returns {Boolean}
+	*/
+const isInteger = (value = []) =&gt; {
+	if (typeof value === &apos;string&apos;) {
+		value = value.split(/\s*,\s*/)
+	}
+	if (!(value instanceof Array)) {
+		value = [value]
+	}
+	return !value.find(v =&gt; {
+		if (!isNaN(v)) {
+			v = parseFloat(v)
+			if (Math.floor(v) === v) {
+				return false
+			}
+		}
+		return true
+	})
+}
+
+/**
+	* @desc check if passed value (array of values) is a float
+	* @param {Number|String|Array} value
+	* @returns {Boolean}
+	*/
+const isFloat = (value = []) =&gt; {
+	if (typeof value === &apos;string&apos;) {
+		value = value.split(/\s*,\s*/)
+	}
+	if (!(value instanceof Array)) {
+		value = [value]
+	}
+	return !value.find(v =&gt; isNaN(v))
+}
+
+/**
+	* @desc check if passed value (array of values) is alphanumeric
+	* @param {Number|String|Array} value
+	* @returns {Boolean}
+	*/
+const isAlphaNumeric = (value = []) =&gt; {
+	if (typeof value === &apos;string&apos;) {
+		value = value.split(/\s*,\s*(?![^(]*\))/)
+	}
+	if (!(value instanceof Array)) {
+		value = [value]
+	}
+	return !value.find(v =&gt; v.toString().match(/[^0-9a-z,.()# ]/i))
+}
+
+/**
+	* @desc normalize the values by the threshold
+	* @param {Number|String|Array} value
+	* @param {Number} threshold
+	* @returns {String|Array}
+	*/
+const normalize = (value = [], threshold = 1) =&gt; {
+	const type = typeof value
+	if (type === &apos;string&apos;) {
+		value = value.split(/\s*,\s*/)
+	}
+	if (!(value instanceof Array)) {
+		value = [value]
+	}
+	const max = Math.max(...value) || 1
+	if (max &gt; threshold) {
+		const ratio = threshold / max
+		value = value.map(v =&gt; (v * ratio).toString())
+		if (type === &apos;string&apos; || type === &apos;number&apos;) {
+			value = value.join(&apos;, &apos;)
+		}
+	}
+	return value
+}
+
+/** @desc Options parsers */
+const parsers = {
+	layers(value) {
+		if (value &amp;&amp; value.toString) {
+			value = value.toString()
+			if (value &amp;&amp; !value.match(/[^0-9]/)) {
+				return {layers: value}
+			}
+		}
+		return {}
+	},
+
+	arms(value) {
+		if (!isInteger(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {arms: value.toString()}
+	},
+
+	fill(value) {
+		if (!isAlphaNumeric(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {fill: value.toString()}
+	},
+
+	ratio(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		value = normalize(value)
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {ratio: value.toString()}
+	},
+
+	rotation(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {rotation: value.toString()}
+	},
+
+	zoom(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		value = normalize(value)
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {zoom: value.toString()}
+	},
+
+	width(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {width: value.toString()}
+	},
+
+	height(value) {
+		if (!isFloat(value)) {
+			return {}
+		}
+		if (value instanceof Array) {
+			value = value.join(&apos;, &apos;)
+		}
+		return {height: value.toString()}
+	},
+}
+
+const attributes = Object.keys(parsers)
+
+/**
+	* @desc Get star icon opts from the request
+	* @param {HapiRequest} request
+	* @return {StarIconOpts}
+	*/
+export function parseOpts({query = {}} = {}) {
+	return (
+		attributes
+			.map(p =&gt; query[p] ? parsers[p](query[p]) : {})
+			.reduce((r, p) =&gt; ({...r, ...p}), {})
+	)
+}
+
+export default parseOpts
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

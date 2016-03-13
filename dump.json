@@ -1,0 +1,1611 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/createRouteConfig.js",
+    "memberof": null,
+    "longname": "src/createRouteConfig.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import parseOpts from './parseOpts'\nimport createSvg from './createSvg'\n\n/** @external {HapiRouteConfig} http://hapijs.com/api#route-options */\n\n/**\n\t* @typedef {Object} StarApiConfig\n\t* @property {String} ?method\n\t* @property {String} ?path - base endpoint\n\t*/\n\n/**\n\t* @desc Get hapi route configuration object\n\t* @param {StarApiConfig} config\n\t* @return {HapiRouteConfig}\n\t*/\nexport function createRouteConfig(config = {}) {\n\tconst {method = 'GET', path = '/star'} = config\n\treturn {\n\t\t...config, method, path, handler: (request, reply) => {\n\t\t\treturn reply(createSvg(parseOpts(request))).type('image/svg+xml')\n\t\t},\n\t}\n}\n\nexport default createRouteConfig\n"
+  },
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "HapiRouteConfig",
+    "externalLink": "http://hapijs.com/api#route-options",
+    "memberof": "src/createRouteConfig.js",
+    "longname": "src/createRouteConfig.js~HapiRouteConfig",
+    "access": null,
+    "description": null
+  },
+  {
+    "__docId__": 2,
+    "kind": "typedef",
+    "static": true,
+    "variation": null,
+    "name": "StarApiConfig",
+    "memberof": "src/createRouteConfig.js",
+    "longname": "src/createRouteConfig.js~StarApiConfig",
+    "access": null,
+    "description": "",
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "?method",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "?path",
+        "description": "base endpoint"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "StarApiConfig"
+    }
+  },
+  {
+    "__docId__": 3,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "createRouteConfig",
+    "memberof": "src/createRouteConfig.js",
+    "longname": "src/createRouteConfig.js~createRouteConfig",
+    "access": null,
+    "export": true,
+    "importPath": "star-icon-hapi/src/createRouteConfig.js",
+    "importStyle": "{createRouteConfig}",
+    "description": "Get hapi route configuration object",
+    "lineNumber": 17,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "StarApiConfig"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "HapiRouteConfig"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/createSvg.js",
+    "memberof": null,
+    "longname": "src/createSvg.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import {render, paths} from 'star-icon-tag'\nimport dom from './microdom'\n\nconst header = `<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n`\n\n/**\n\t* @desc Generate SVG\n\t* @param {StarIconOpts} opts\n\t* @return {String} - SVG data\n\t*/\nexport function createSvg(opts = {}) {\n\tconst svg = dom.createElement('svg')\n\tsvg.setAttribute('viewBox', '0 0 1 1')\n\tsvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')\n\tsvg.setAttribute('version', '1.1')\n\tsvg.setAttribute('baseProfile', 'full')\n\tif (opts.width && opts.height) {\n\t\tsvg.setAttribute('width', opts.width)\n\t\tsvg.setAttribute('height', opts.height)\n\t}\n\trender(svg, paths(undefined, opts).items, dom)\n\treturn header + svg.toString()\n}\n\nexport default createSvg\n"
+  },
+  {
+    "__docId__": 5,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "header",
+    "memberof": "src/createSvg.js",
+    "longname": "src/createSvg.js~header",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/createSvg.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "createSvg",
+    "memberof": "src/createSvg.js",
+    "longname": "src/createSvg.js~createSvg",
+    "access": null,
+    "export": true,
+    "importPath": "star-icon-hapi/src/createSvg.js",
+    "importStyle": "{createSvg}",
+    "description": "Generate SVG",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "StarIconOpts"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "opts",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "SVG data"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 7,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/index.js",
+    "memberof": null,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "export createRouteConfig from './createRouteConfig'\nexport parseOpts from './parseOpts'\nexport default from './createRouteConfig'\n"
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/microdom.js",
+    "memberof": null,
+    "longname": "src/microdom.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "class Node {\n\tconstructor({attributes, children, nodeName} = {}) {\n\t\tthis.attributes = attributes || []\n\t\tthis.children = children || []\n\t\tthis.nodeName = nodeName || 'div'\n\t}\n\n\t/**\n\t* @desc setAttribute\n\t* @param {String} name\n\t* @param {String} value\n\t* @param {Node} node\n\t*/\n\tsetAttribute(name, value, node = this) {\n\t\tlet attribute = node.attributes.find(a => a.name === name)\n\t\tif (!attribute) {\n\t\t\tattribute = {}\n\t\t\tnode.attributes.push(attribute)\n\t\t}\n\t\tattribute.name = name\n\t\tattribute.value = value\n\t\treturn node\n\t}\n\n\t/**\n\t\t* @desc getAttribute\n\t\t* @param {String} name\n\t\t* @param {Node} node\n\t\t*/\n\tgetAttribute(name, node = this) {\n\t\tconst attribute = node.attributes.find(a => a.name === name)\n\t\tif (attribute) {\n\t\t\treturn attribute.value\n\t\t}\n\t}\n\n\t/**\n\t\t* @desc appendChild\n\t\t* @param {Node} child\n\t\t* @param {Node} parent\n\t\t* @returns {Node}\n\t\t*/\n\tappendChild(child, parent = this) {\n\t\tif (parent && child && parent.children) {\n\t\t\tif (parent.children.indexOf(child) === -1) {\n\t\t\t\tparent.children.push(child)\n\t\t\t}\n\t\t}\n\t\treturn parent\n\t}\n\n\t/**\n\t\t* @desc removeChild\n\t\t* @param {Node} child\n\t\t* @param {Node} parent\n\t\t* @returns {Node}\n\t\t*/\n\tremoveChild(child, parent = this) {\n\t\tif (parent && child && parent.children) {\n\t\t\tconst index = parent.children.indexOf(child)\n\t\t\tif (index > -1) {\n\t\t\t\tparent.children.splice(index, 1)\n\t\t\t}\n\t\t}\n\t\treturn parent\n\t}\n\n\t/** @desc toString */\n\ttoString() {\n\t\tconst {nodeName} = this\n\t\tconst children = this.children.map(c => c.toString()).join('')\n\t\tconst attributes = this.attributes.map(a => {\n\t\t\tconst value = typeof a.value === 'undefined' ? '' : a.value\n\t\t\treturn value ? ` ${a.name}=\"${value}\"` : ''\n\t\t}).join('')\n\n\t\treturn `<${nodeName}${attributes}>${children}</${nodeName}>`\n\t}\n}\n\nexport const microdom = {\n\tcreateElement: nodeName => new Node({nodeName}),\n\tcreateElementNS: (ns, nodeName) => new Node({nodeName}),\n}\n\nexport default microdom\n"
+  },
+  {
+    "__docId__": 9,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "memberof": "src/microdom.js",
+    "longname": "src/microdom.js~Node",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/microdom.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 10,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "objectPattern",
+        "optional": true,
+        "types": [
+          "{\"attributes\": *, \"children\": *, \"nodeName\": *}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "attributes",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#attributes",
+    "access": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "children",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#children",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "nodeName",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#nodeName",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 14,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setAttribute",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#setAttribute",
+    "access": null,
+    "description": "setAttribute",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Node"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "node",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getAttribute",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#getAttribute",
+    "access": null,
+    "description": "getAttribute",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Node"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "node",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "appendChild",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#appendChild",
+    "access": null,
+    "description": "appendChild",
+    "lineNumber": 43,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Node}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Node"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "child",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Node"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "parent",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Node"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "removeChild",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#removeChild",
+    "access": null,
+    "description": "removeChild",
+    "lineNumber": 58,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Node}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Node"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "child",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Node"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "parent",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Node"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "toString",
+    "memberof": "src/microdom.js~Node",
+    "longname": "src/microdom.js~Node#toString",
+    "access": null,
+    "description": "toString",
+    "lineNumber": 69,
+    "params": [],
+    "return": {
+      "types": [
+        "string"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 19,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "microdom",
+    "memberof": "src/microdom.js",
+    "longname": "src/microdom.js~microdom",
+    "access": null,
+    "export": true,
+    "importPath": "star-icon-hapi/src/microdom.js",
+    "importStyle": "{microdom}",
+    "description": null,
+    "lineNumber": 81,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/parseOpts.js",
+    "memberof": null,
+    "longname": "src/parseOpts.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n\t* @typedef {Object} StarIconOpts\n\t* @property {String} layers\n\t* @property {String} arms\n\t* @property {String} fill\n\t* @property {String} ratio\n\t* @property {String} rotation\n\t* @property {string} zoom\n\t*/\n\n/**\n\t* @desc check if passed value (array of values) is an integer\n\t* @param {Number|String|Array} value\n\t* @returns {Boolean}\n\t*/\nconst isInteger = (value = []) => {\n\tif (typeof value === 'string') {\n\t\tvalue = value.split(/\\s*,\\s*/)\n\t}\n\tif (!(value instanceof Array)) {\n\t\tvalue = [value]\n\t}\n\treturn !value.find(v => {\n\t\tif (!isNaN(v)) {\n\t\t\tv = parseFloat(v)\n\t\t\tif (Math.floor(v) === v) {\n\t\t\t\treturn false\n\t\t\t}\n\t\t}\n\t\treturn true\n\t})\n}\n\n/**\n\t* @desc check if passed value (array of values) is a float\n\t* @param {Number|String|Array} value\n\t* @returns {Boolean}\n\t*/\nconst isFloat = (value = []) => {\n\tif (typeof value === 'string') {\n\t\tvalue = value.split(/\\s*,\\s*/)\n\t}\n\tif (!(value instanceof Array)) {\n\t\tvalue = [value]\n\t}\n\treturn !value.find(v => isNaN(v))\n}\n\n/**\n\t* @desc check if passed value (array of values) is alphanumeric\n\t* @param {Number|String|Array} value\n\t* @returns {Boolean}\n\t*/\nconst isAlphaNumeric = (value = []) => {\n\tif (typeof value === 'string') {\n\t\tvalue = value.split(/\\s*,\\s*(?![^(]*\\))/)\n\t}\n\tif (!(value instanceof Array)) {\n\t\tvalue = [value]\n\t}\n\treturn !value.find(v => v.toString().match(/[^0-9a-z,.()# ]/i))\n}\n\n/**\n\t* @desc normalize the values by the threshold\n\t* @param {Number|String|Array} value\n\t* @param {Number} threshold\n\t* @returns {String|Array}\n\t*/\nconst normalize = (value = [], threshold = 1) => {\n\tconst type = typeof value\n\tif (type === 'string') {\n\t\tvalue = value.split(/\\s*,\\s*/)\n\t}\n\tif (!(value instanceof Array)) {\n\t\tvalue = [value]\n\t}\n\tconst max = Math.max(...value) || 1\n\tif (max > threshold) {\n\t\tconst ratio = threshold / max\n\t\tvalue = value.map(v => (v * ratio).toString())\n\t\tif (type === 'string' || type === 'number') {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t}\n\treturn value\n}\n\n/** @desc Options parsers */\nconst parsers = {\n\tlayers(value) {\n\t\tif (value && value.toString) {\n\t\t\tvalue = value.toString()\n\t\t\tif (value && !value.match(/[^0-9]/)) {\n\t\t\t\treturn {layers: value}\n\t\t\t}\n\t\t}\n\t\treturn {}\n\t},\n\n\tarms(value) {\n\t\tif (!isInteger(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {arms: value.toString()}\n\t},\n\n\tfill(value) {\n\t\tif (!isAlphaNumeric(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {fill: value.toString()}\n\t},\n\n\tratio(value) {\n\t\tif (!isFloat(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tvalue = normalize(value)\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {ratio: value.toString()}\n\t},\n\n\trotation(value) {\n\t\tif (!isFloat(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {rotation: value.toString()}\n\t},\n\n\tzoom(value) {\n\t\tif (!isFloat(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tvalue = normalize(value)\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {zoom: value.toString()}\n\t},\n\n\twidth(value) {\n\t\tif (!isFloat(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {width: value.toString()}\n\t},\n\n\theight(value) {\n\t\tif (!isFloat(value)) {\n\t\t\treturn {}\n\t\t}\n\t\tif (value instanceof Array) {\n\t\t\tvalue = value.join(', ')\n\t\t}\n\t\treturn {height: value.toString()}\n\t},\n}\n\nconst attributes = Object.keys(parsers)\n\n/**\n\t* @desc Get star icon opts from the request\n\t* @param {HapiRequest} request\n\t* @return {StarIconOpts}\n\t*/\nexport function parseOpts({query = {}} = {}) {\n\treturn (\n\t\tattributes\n\t\t\t.map(p => query[p] ? parsers[p](query[p]) : {})\n\t\t\t.reduce((r, p) => ({...r, ...p}), {})\n\t)\n}\n\nexport default parseOpts\n"
+  },
+  {
+    "__docId__": 21,
+    "kind": "typedef",
+    "static": true,
+    "variation": null,
+    "name": "StarIconOpts",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~StarIconOpts",
+    "access": null,
+    "description": "",
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "layers",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arms",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "fill",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ratio",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "rotation",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "zoom",
+        "description": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "StarIconOpts"
+    }
+  },
+  {
+    "__docId__": 22,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "isInteger",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~isInteger",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": null,
+    "description": "check if passed value (array of values) is an integer",
+    "lineNumber": 16,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number",
+          "String",
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 23,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "isFloat",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~isFloat",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": null,
+    "description": "check if passed value (array of values) is a float",
+    "lineNumber": 39,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number",
+          "String",
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 24,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "isAlphaNumeric",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~isAlphaNumeric",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": null,
+    "description": "check if passed value (array of values) is alphanumeric",
+    "lineNumber": 54,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number",
+          "String",
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "normalize",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~normalize",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": null,
+    "description": "normalize the values by the threshold",
+    "lineNumber": 70,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String|Array}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number",
+          "String",
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "threshold",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String",
+        "Array"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 26,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "parsers",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~parsers",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": null,
+    "description": "Options parsers",
+    "lineNumber": 90,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 27,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "attributes",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~attributes",
+    "access": null,
+    "export": false,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 174,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "parseOpts",
+    "memberof": "src/parseOpts.js",
+    "longname": "src/parseOpts.js~parseOpts",
+    "access": null,
+    "export": true,
+    "importPath": "star-icon-hapi/src/parseOpts.js",
+    "importStyle": "{parseOpts}",
+    "description": "Get star icon opts from the request",
+    "lineNumber": 181,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "HapiRequest"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "request",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "StarIconOpts"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]

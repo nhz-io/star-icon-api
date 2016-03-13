@@ -1,0 +1,29 @@
+{
+  "coverage": "75%",
+  "expectCount": 4,
+  "actualCount": 3,
+  "files": {
+    "src/createRouteConfig.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/createSvg.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/microdom.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        81
+      ]
+    },
+    "src/parseOpts.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}

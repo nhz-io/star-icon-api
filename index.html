@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/nhz-io/star-icon-hapi" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createRouteConfig">createRouteConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSvg">createSvg</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseOpts">parseOpts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-microdom">microdom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StarApiConfig">StarApiConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StarIconOpts">StarIconOpts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://hapijs.com/api#route-options">HapiRouteConfig</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p></p><p>
+  <img src="https://star.nhz.io?layers=6&amp;width=300&amp;height=300&amp;fill=navy,silverblue,lightblue,navy,silverblue,lightblue&amp;ratio=0.55,0.5,0.44,0.55,0.5,0.44&amp;rotation=0,0,0,36,36,36&amp;zoom=1,0.95,0.9,0.5,0.45,0.4">
+</p><p></p>
+<p></p><h1>star-icon-hapi</h1><p></p>
+<p></p><p><br>  <a href="https://npmjs.org/package/star-icon-hapi">
+    <img src="https://img.shields.io/npm/v/star-icon-hapi.svg?style=flat">
+  </a>
+  <a href="https://travis-ci.org/nhz-io/star-icon-hapi">
+    <img src="https://img.shields.io/travis/nhz-io/star-icon-hapi.svg?style=flat">
+  </a><br></p><p></p>
+<p></p><h3>SVG Stars as a Service</h3>
+
+<p></p>
+<h2 id="install">Install</h2>
+<pre><code class="lang-sh"><code class="source-code prettyprint">$ npm i -S star-icon-hapi</code>
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-js"><code class="source-code prettyprint">...
+import starIconRoute from &apos;star-icon-hapi&apos;
+...
+// Setup hapi server
+...
+server.route(starIconRoute({
+    method: &apos;GET&apos;,
+    path: &apos;/api/star&apos;,
+}))</code>
+</code></pre>
+<h3 id="query-parameter">Query parameter</h3>
+<ul>
+<li><code>layers</code> - number of layers in the star</li>
+<li><code>width</code> - optional width (height must be present too)</li>
+<li><code>height</code> - optional height (width must be present too)</li>
+<li><code>arms</code> - single number / list of numbers per layer</li>
+<li><code>fill</code> - single color / list of colors per layer</li>
+<li><code>ratio</code> - single inner/outer ratio / list of ratios per layer (<code>ratio &lt; 1</code>)</li>
+<li><code>rotatio</code> - single rotation angle / list of angles per layer (degrees)</li>
+<li><code>zoom</code> - single zoom value / list of values per layer (<code>zoom &lt; 1</code>)</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<h3 id="-header-star-https-star-nhz-io-layers-6-width-300-height-300-fill-navy-silverblue-lightblue-navy-silverblue-lightblue-ratio-0-55-0-5-0-44-0-55-0-5-0-44-rotation-0-0-0-36-36-36-zoom-1-0-95-0-9-0-5-0-45-0-4-"><a href="https://star.nhz.io?layers=6&amp;width=300&amp;height=300&amp;fill=navy,silverblue,lightblue,navy,silverblue,lightblue&amp;ratio=0.55,0.5,0.44,0.55,0.5,0.44&amp;rotation=0,0,0,36,36,36&amp;zoom=1,0.95,0.9,0.5,0.45,0.4">Header Star</a></h3>
+<p><img src="https://star.nhz.io?layers=6&amp;width=300&amp;height=300&amp;fill=navy,silverblue,lightblue,navy,silverblue,lightblue&amp;ratio=0.55,0.5,0.44,0.55,0.5,0.44&amp;rotation=0,0,0,36,36,36&amp;zoom=1,0.95,0.9,0.5,0.45,0.4" alt="Header Star"></p>
+<ul>
+<li><strong>layers</strong>: <code>6</code></li>
+<li><strong>width</strong>: <code>300</code></li>
+<li><strong>height</strong>: <code>300</code></li>
+<li><strong>fill</strong>: <code>navy</code>, <code>silverblue</code>, <code>lightblue</code>, <code>navy</code>, <code>silverblue</code>, <code>lightblue</code></li>
+<li><strong>ratio</strong>: <code>0.55</code>, <code>0.5</code>, <code>0.44</code>, <code>0.55</code>, <code>0.5</code>, <code>0.44</code></li>
+<li><strong>rotation</strong>: <code>0</code>, <code>0</code>, <code>0</code>, <code>36</code>, <code>36</code>, <code>36</code></li>
+<li><strong>zoom</strong>: <code>1</code>, <code>0.95</code>, <code>0.95</code>, <code>0.5</code>, <code>0.45</code>, <code>0.4</code></li>
+</ul>
+<h3 id="-compass-https-star-nhz-io-layers-8-width-300-height-300-arms-4-fill-black-white-black-white-black-23eee-black-23eee-ratio-0-16-0-12-0-16-0-12-0-16-0-12-0-16-0-12-rotation-337-5-337-5-22-5-22-5-0-0-45-45-zoom-0-8-0-75-0-8-0-75-1-0-95-1-0-95-"><a href="https://star.nhz.io?layers=8&amp;width=300&amp;height=300&amp;arms=4&amp;fill=black,white,black,white,black,%23eee,black,%23eee&amp;ratio=0.16,0.12,0.16,0.12,0.16,0.12,0.16,0.12&amp;rotation=337.5,337.5,22.5,22.5,0,0,45,45&amp;zoom=0.8,0.75,0.8,0.75,1,0.95,1,0.95">Compass</a></h3>
+<p><img src="https://star.nhz.io?layers=8&amp;width=300&amp;height=300&amp;arms=4&amp;fill=black,white,black,white,black,%23eee,black,%23eee&amp;ratio=0.16,0.12,0.16,0.12,0.16,0.12,0.16,0.12&amp;rotation=337.5,337.5,22.5,22.5,0,0,45,45&amp;zoom=0.8,0.75,0.8,0.75,1,0.95,1,0.95" alt="Compass"></p>
+<ul>
+<li><strong>layers</strong>: <code>8</code></li>
+<li><strong>width</strong>: <code>300</code></li>
+<li><strong>height</strong>: <code>300</code></li>
+<li><strong>fill</strong>: <code>black</code>, <code>white</code>, <code>black</code>, <code>white</code>, <code>black</code>, <code>#eee</code>, <code>black</code>, <code>#eee</code></li>
+<li><strong>ratio</strong>: <code>0.16</code>, <code>0.12</code>, <code>0.16</code>, <code>0.12</code>, <code>0.16</code>, <code>0.12</code>, <code>0.16</code>, <code>0.12</code></li>
+<li><strong>rotation</strong>: <code>337.5</code>, <code>337.5</code>, <code>22.5</code>, <code>22.5</code>, <code>0</code>, <code>0</code>, <code>45</code>, <code>45</code></li>
+<li><strong>zoom</strong>: <code>0.8</code>, <code>0.75</code>, <code>0.8</code>, <code>0.75</code>, <code>1</code>, <code>0.95</code>, <code>1</code>, <code>0.95</code></li>
+</ul>
+<h3 id="-magen-david-https-star-nhz-io-layers-4-width-300-height-300-arms-3-fill-navy-white-navy-white-ratio-0-5-0-5-0-5-0-5-rotation-0-0-180-180-zoom-1-0-9-1-0-9-"><a href="https://star.nhz.io/?layers=4&amp;width=300&amp;height=300&amp;arms=3&amp;fill=navy,white,navy,white&amp;ratio=0.5,0.5,0.5,0.5&amp;rotation=0,0,180,180&amp;zoom=1,0.9,1,0.9">Magen David</a></h3>
+<p><img src="https://star.nhz.io/?layers=4&amp;width=300&amp;height=300&amp;arms=3&amp;fill=navy,white,navy,white&amp;ratio=0.5,0.5,0.5,0.5&amp;rotation=0,0,180,180&amp;zoom=1,0.9,1,0.9" alt="Magen David"></p>
+<ul>
+<li><strong>layers</strong>: <code>4</code></li>
+<li><strong>width</strong>: <code>300</code></li>
+<li><strong>height</strong>: <code>300</code></li>
+<li><strong>fill</strong>: <code>navy</code>, <code>white</code>, <code>navy</code>, <code>white</code></li>
+<li><strong>ratio</strong>: <code>0.5</code>, <code>0.5</code>, <code>0.5</code>, <code>0.5</code></li>
+<li><strong>rotation</strong>: <code>0</code>, <code>0</code>, <code>180</code>, <code>180</code></li>
+<li><strong>zoom</strong>: <code>1</code>, <code>0.9</code>, <code>1</code>, <code>0.9</code></li>
+</ul>
+<h2 id="-esdoc-http-nhz-io-github-io-star-icon-hapi-"><a href="http://nhz-io.github.io/star-icon-hapi">ESDOC</a></h2>
+<h2 id="see-also">See Also</h2>
+<p><img src="https://star.nhz.io?layers=6&amp;width=30&amp;height=30&amp;fill=brown,orange,yellow,brown,orange,yellow&amp;ratio=0.55,0.5,0.44,0.55,0.5,0.44&amp;rotation=0,0,0,36,36,36&amp;zoom=1,0.95,0.9,0.5,0.45,0.4" alt="star-icon-tag">
+<a href="https://github.com/nhz-io/star-icon-tag">https://github.com/nhz-io/star-icon-tag</a></p>
+<h2 id="license">License</h2>
+<p>MIT &#xA9; <a href="https://nhz.io/star-icon-hapi">Ishi Ruy</a></p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

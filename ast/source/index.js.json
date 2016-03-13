@@ -1,0 +1,216 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 130,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 4,
+      "column": 0
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 0,
+      "end": 51,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 51
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 7,
+          "end": 24,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 24
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 7,
+            "end": 24,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 24
+              }
+            },
+            "name": "createRouteConfig"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 30,
+        "end": 51,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 30
+          },
+          "end": {
+            "line": 1,
+            "column": 51
+          }
+        },
+        "value": "./createRouteConfig",
+        "rawValue": "./createRouteConfig",
+        "raw": "'./createRouteConfig'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 52,
+      "end": 87,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 35
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 59,
+          "end": 68,
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 16
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 59,
+            "end": 68,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 16
+              }
+            },
+            "name": "parseOpts"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 74,
+        "end": 87,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 22
+          },
+          "end": {
+            "line": 2,
+            "column": 35
+          }
+        },
+        "value": "./parseOpts",
+        "rawValue": "./parseOpts",
+        "raw": "'./parseOpts'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 88,
+      "end": 129,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 41
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 95,
+          "end": 102,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 14
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 95,
+            "end": 102,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 14
+              }
+            },
+            "name": "default"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 108,
+        "end": 129,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 20
+          },
+          "end": {
+            "line": 3,
+            "column": 41
+          }
+        },
+        "value": "./createRouteConfig",
+        "rawValue": "./createRouteConfig",
+        "raw": "'./createRouteConfig'"
+      }
+    }
+  ]
+}
