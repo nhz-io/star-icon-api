@@ -25,9 +25,9 @@
     "prepublish": "npm run dist"
   },
   "files": [
-    "./dist"
+    "dist"
   ],
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "keywords": [
     "nhz.io",
     "star",

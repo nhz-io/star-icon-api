@@ -4,7 +4,6 @@ assets
 doc
 src
 test
-.git
 .babelrc
 .editorconfig
 .gitattributes
@@ -12,6 +11,4 @@ test
 .npmignore
 .travis.yml
 .esdoc
-npm-shrinkwrap.json
-*.log
 gh-pages.sh
