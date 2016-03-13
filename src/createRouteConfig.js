@@ -17,7 +17,7 @@ import createSvg from './createSvg'
 export function createRouteConfig(config = {}) {
 	const {method = 'GET', path = '/star'} = config
 	return {
-		method, path, handler: (request, reply) => {
+		...config, method, path, handler: (request, reply) => {
 			return reply(createSvg(parseOpts(request))).type('image/svg+xml')
 		},
 	}
