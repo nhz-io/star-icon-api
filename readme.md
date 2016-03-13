@@ -47,7 +47,7 @@ server.route(starIconRoute({
 
 ## Examples
 
-### Header Star](https://star.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
+### [Header Star](https://star.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
 
 ![Header Star](https://star.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
 
@@ -86,6 +86,7 @@ server.route(starIconRoute({
 ## [ESDOC](http://nhz-io.github.io/star-icon-hapi)
 
 ## See Also
+![Header Star](https://star.nhz.io?layers=6&width=30&height=30&fill=brown,orange,yellow,brown,orange,yellow&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
 [https://github.com/nhz-io/star-icon-tag](https://github.com/nhz-io/star-icon-tag)
 
 ## License
