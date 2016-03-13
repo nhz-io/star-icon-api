@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://sinker.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4"
+  <img src="https://star.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4"
     alt="STAR">
 </p>
 <h1 align="center">star-icon-hapi</h1>
@@ -47,8 +47,9 @@ server.route(starIconRoute({
 
 ## Examples
 
-### Header Star
-![Header Star](https://sinker.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
+### Header Star](https://star.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
+
+![Header Star](https://star.nhz.io?layers=6&width=300&height=300&fill=navy,silverblue,lightblue,navy,silverblue,lightblue&ratio=0.55,0.5,0.44,0.55,0.5,0.44&rotation=0,0,0,36,36,36&zoom=1,0.95,0.9,0.5,0.45,0.4)
 
 * **layers**: `6`
 * **width**: `300`
@@ -58,8 +59,9 @@ server.route(starIconRoute({
 * **rotation**: `0`, `0`, `0`, `36`, `36`, `36`
 * **zoom**: `1`, `0.95`, `0.95`, `0.5`, `0.45`, `0.4`
 
-### Compass
-![Compass](https://sinker.nhz.io?layers=8&width=300&height=300&arms=4&fill=black,white,black,white,black,%23eee,black,%23eee&ratio=0.16,0.12,0.16,0.12,0.16,0.12,0.16,0.12&rotation=337.5,337.5,22.5,22.5,0,0,45,45&zoom=0.8,0.75,0.8,0.75,1,0.95,1,0.95)
+### [Compass](https://star.nhz.io?layers=8&width=300&height=300&arms=4&fill=black,white,black,white,black,%23eee,black,%23eee&ratio=0.16,0.12,0.16,0.12,0.16,0.12,0.16,0.12&rotation=337.5,337.5,22.5,22.5,0,0,45,45&zoom=0.8,0.75,0.8,0.75,1,0.95,1,0.95)
+
+![Compass](https://star.nhz.io?layers=8&width=300&height=300&arms=4&fill=black,white,black,white,black,%23eee,black,%23eee&ratio=0.16,0.12,0.16,0.12,0.16,0.12,0.16,0.12&rotation=337.5,337.5,22.5,22.5,0,0,45,45&zoom=0.8,0.75,0.8,0.75,1,0.95,1,0.95)
 
 * **layers**: `8`
 * **width**: `300`
@@ -69,8 +71,9 @@ server.route(starIconRoute({
 * **rotation**: `337.5`, `337.5`, `22.5`, `22.5`, `0`, `0`, `45`, `45`
 * **zoom**: `0.8`, `0.75`, `0.8`, `0.75`, `1`, `0.95`, `1`, `0.95`
 
-### Magen David
-![Magen David](https://sinker.nhz.io/?layers=4&width=300&height=300&arms=3&fill=navy,white,navy,white&ratio=0.5,0.5,0.5,0.5&rotation=0,0,180,180&zoom=1,0.9,1,0.9)
+### [Magen David](https://star.nhz.io/?layers=4&width=300&height=300&arms=3&fill=navy,white,navy,white&ratio=0.5,0.5,0.5,0.5&rotation=0,0,180,180&zoom=1,0.9,1,0.9)
+
+![Magen David](https://star.nhz.io/?layers=4&width=300&height=300&arms=3&fill=navy,white,navy,white&ratio=0.5,0.5,0.5,0.5&rotation=0,0,180,180&zoom=1,0.9,1,0.9)
 
 * **layers**: `4`
 * **width**: `300`
@@ -80,7 +83,10 @@ server.route(starIconRoute({
 * **rotation**: `0`, `0`, `180`, `180`
 * **zoom**: `1`, `0.9`, `1`, `0.9`
 
-## [ESDOC](https://github.io/nhz-io/star-icon-hapi)
+## [ESDOC](http://nhz-io.github.io/star-icon-hapi)
+
+## See Also
+[https://github.com/nhz-io/star-icon-tag](https://github.com/nhz-io/star-icon-tag)
 
 ## License
 
