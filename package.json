@@ -1,6 +1,6 @@
 {
   "name": "star-icon-hapi",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "star-icon svg as a service (hapi)",
   "license": "MIT",
   "repository": "nhz-io/star-icon-hapi",
